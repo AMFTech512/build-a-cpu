@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<title>CPU: Introduction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><style>
+body {font-family: "Roboto", sans-serif}
+.w3-bar-block .w3-bar-item{padding:16px;font-weight:bold}
+</style>
+<body>
+
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main">
+
+<div id="myTop" class="w3-container w3-top w3-theme w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+  <span id="myIntro" class="w3-hide">Building a CPU: Introduction</span></p>
+</div>
+
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">Building a CPU</h1>
+</header>
+
+<div class="w3-container" style="padding:32px">
+
+<h2>Introduction</h2><h7>Austin Fay <a class="w3-text-gray">January 6, 2018</a></h7>
+
+<p>As long as I can remember, I have been mystified by how computers actually process data at the hardware level. Sure, I was aware that desktop computers were comprised of a motherboard, CPU, memory, disk drive and input devices. I also knew that computers are "just ones and zeros." But beyond that, I was clueless. So when I finally learned the details about how actual computer hardware works, I couldn't help but inform everyone I know. Unfortunately, not everyone wants to know. So if you're reading this, you either clicked here by accident, or you really want to know how modern digital computing works at the lowest level. So that's what this site is about then. If you read the whole thing, you might have a good idea about how you might go about building a CPU.</p>
+
+<hr>
+
+<p>I learned about this topic from various sources of information:</p>
+
+<ul class="w3-ul">
+  <li>Ben Eater: <a href="https://eater.net/" target="new">eater.net</a></li>
+  <li>Computerphile: <a href="https://www.youtube.com/user/Computerphile" target="new">youtube.com</a></li>
+  <li>M. Morris Mano (1998). Computer Engineering: Hardware Design</li>
+</ul>
+
+</div>
+
+<footer class="w3-container">
+  <p>&copy Copyright 2018 Austin Fay</p>
+</footer>
+     
+</div>
+
+<script>
+// Open and close the sidebar on medium and small screens
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Change style of top container on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+        document.getElementById("myIntro").classList.add("w3-show-inline-block");
+    } else {
+        document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+        document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+    }
+}
+
+// Accordions
+function myAccordion(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-theme";
+    } else { 
+        x.className = x.className.replace("w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(" w3-theme", "");
+    }
+}
+
+document.ready(myAccordion('memory'));
+</script>
+     
+</body>
+</html> 
