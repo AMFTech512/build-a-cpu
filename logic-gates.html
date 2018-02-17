@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<title>CPU: Introduction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Roboto", sans-serif}
+.w3-bar-block .w3-bar-item{padding:16px;font-weight:bold}
+
+.plain {
+	
+	text-decoration: none;
+	display: block;
+}
+
+hr {
+	background-color: #ccc;
+	height: 1px;
+}
+</style>
+
+<script>
+window.onscroll = function() {myFunction()};
+    function myFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+            document.getElementById("myIntro").classList.add("w3-show-inline-block");
+        } else {
+            document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+            document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+        }
+    }
+</script>
+<body>
+
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main">
+
+<header class="w3-container w3-theme" style="padding:32px 32px">
+  <h1 class="w3-xxxlarge">Logic Gates</h1>
+</header>
+
+<div class="w3-container" style="padding:32px">
+
+	<h2>Logic Gates</h2><h7>Austin Fay <a class="w3-text-gray">January 14, 2018</a></h7>
+
+	<p>Computers are just a bunch of cleverly arranged transistors. But how do transistors actually perform computational operations? The answer is through <b>boolean logic</b>. Boolean logic is simply the idea that we can make logical conclusions from variables with only two states. Those states could be represented as false/true, 0/1, yin/yang, 0 volts/5 volts, you name it. Each logic gate has a specific output for a set of given inputs, which you will see later.</p>
+
+	<p>Here are the basic logic gates:</p>
+
+	<div class="w3-container">
+		<div class="w3-container w3-half">
+			<table style="max-width: 500px;" class="w3-table w3-bordered w3-centered">
+				<tr class="w3-white"><td style="vertical-align: middle"><a class="plain" href="#buffers">Buffer</a></td><td><a class="plain" href="#buffers"><img src="images/buffer.png"></a></td></tr>
+				<tr class="w3-white"><td style="vertical-align: middle"><a class="plain" href="#and-gates">AND</a></td><td><a class="plain" href="#and-gates"><img src="images/and.png"></a></td></tr>
+				<tr class="w3-white"><td style="vertical-align: middle"><a class="plain" href="#or-gates">OR</a></td><td><a class="plain" href="#or-gates"><img src="images/or.png"></a></td></tr>
+				<tr class="w3-white"><td style="vertical-align: middle"><a class="plain" href="#not-gates">NOT (Inverted Buffer)</a></td><td><a class="plain" href="#"><img src="images/not.png"></a></td></tr>
+				<tr class="w3-white"><td style="vertical-align: middle"><a class="plain" href="#xor-gates">XOR</a></td><td><a class="plain" href="#xor-gates"><img src="images/xor.png"></a></td></tr>
+			</table>
+		</div>
+		
+	</div>
+	
+	<p>Great, so there are some logic gates that we can supposedly use to build a computer. But how do we make these out of electrical components? Well, keep scrolling and you might find out.</p>
+	
+	<hr>
+	
+	<h2 id="buffers"><img src="images/buffer.png"> Buffers</h2>
+	
+	<div class="w3-row" style="padding-right: 5%">
+		
+		<table style="max-width: 300px" class="w3-table w3-right w3-col w3-container w3-white w3-bordered w3-centered">
+			<tr class="w3-gray"><th>Input</th><th>Output</th></tr>
+			<tr><td>0</td><td>0</td></tr>
+			<tr><td>1</td><td>1</td></tr>
+		</table>
+		
+		<div class="w3-rest w3-container">
+			<p>Buffers are the simplest type of logic gate. They only have one input and one output. You can see a table to the right of all of the possible inputs and outputs of a buffer. We call a table like this a <b>truth table</b>. When we come up with more complicated circuits, truth tables help us identify what outputs we want from a given set of inputs.</p>
+		</div>
+	
+	</div>
+	
+	<br>
+	
+	<div class="w3-row" style="padding-right: 5%;">
+		
+		<div class="w3-right w3-container" style="display: inline-block">
+			<img src="images/buffer-circ.png" alt="Buffer Circuit">
+		</div>
+		
+		<div class="w3-rest w3-container">
+			<p>To the right you can see the Logisim circuit that makes up a buffer. In the center we have our transistor. Connected to the base of our transistor is our input. Our source of power is connected to the collector of the transistor, and the output is connected to the emitter. Our input will dictate whether or not current flows from the collector to the emitter. If our input is 0, there is no current flowing from the collector to the emitter, so the voltage potential is set to low with the pull-down resistor connected to the output. This makes our output 0. If our input is 1, current flows from power to our output. Since only a small amount of current can flow through our pull-down resistor compared to our transistor, the voltage potential is high meaning we have a 1 at our output. Once we build our circuit and we know that it will work consistently how we want to, we can represent it as a triangle (shown to the left of this section's header), and move up a layer of abstraction.</p>
+		</div>
+	
+	</div>
+	
+	<hr>
+	
+	<h2 id="and-gates"><img src="images/and.png"> AND Gates</h2>
+	
+	<div class="w3-row" style="padding-right: 5%">
+		
+		<table style="max-width: 400px" class="w3-table w3-right w3-col w3-container w3-white w3-bordered w3-centered">
+			<tr class="w3-gray"><th>Input A</th><th>Input B</th><th>Output</th></tr>
+			<tr><td>0</td><td>0</td><td>0</td></tr>
+			<tr><td>1</td><td>0</td><td>0</td></tr>
+			<tr><td>0</td><td>1</td><td>0</td></tr>
+			<tr><td>1</td><td>1</td><td>1</td></tr>
+		</table>
+		
+		<div class="w3-rest w3-container">
+			<p>Okay, so we've built a buffer before. But how do we do real logic? Well, to the right you can see the truth table for an AND gate. As the name implies, we only want an output of 1 if Input A and Input B are 1. In any other case, our output should be 0.</p>
+		</div>
+	
+	</div>
+	
+	<br>
+	
+	<div class="w3-row" style="padding-right: 5%">
+		
+		<div class="w3-right w3-container" style="display: inline-block">
+			<img src="images/and-circ.png" alt="AND Circuit">
+		</div>
+		
+		<div class="w3-rest w3-container">
+			<p>To the right is the Logisim circuit for an AND gate. As you can see, the circuit looks a lot like two buffers in series. You would be correct in making that observation. If both of the inputs are zero, the output is zero by default as set by the pull-down resistor. If we set the first input as 1, current can flow through the first transistor but is stopped by the second transistor. If the second input is 1 but not the first, current doesn't flow through either of the transistors. It's not until we set both of the inputs to 1 when the current can flow through both of the transistors and reach the output.</p>
+		</div>
+	
+	</div>
+	
+	<hr>
+	
+	<h2 id="or-gates"><img src="images/or.png"> OR Gates</h2>
+	
+	<div class="w3-row" style="padding-right: 5%">
+		
+		<table style="max-width: 400px" class="w3-table w3-right w3-col w3-container w3-white w3-bordered w3-centered">
+			<tr class="w3-gray"><th>Input A</th><th>Input B</th><th>Output</th></tr>
+			<tr><td>0</td><td>0</td><td>0</td></tr>
+			<tr><td>1</td><td>0</td><td>1</td></tr>
+			<tr><td>0</td><td>1</td><td>1</td></tr>
+			<tr><td>1</td><td>1</td><td>1</td></tr>
+		</table>
+		
+		<div class="w3-rest w3-container">
+			<p>AND gates are great and all, but what if we want to be less picky? Instead of requiring both inputs to be 1, what if we only want to require one input to be 1? Well in that instance, you might want to build an OR gate. The output of an OR gate will be 1 if either Input A or Input B is 1 as shown in the truth table to the right.</p>
+		</div>
+	
+	</div>
+	
+	<br>
+	
+	<div class="w3-row" style="padding-right: 5%">
+		
+		<div class="w3-right w3-container" style="display: inline-block">
+			<img src="images/or-circ.png" alt="OR Circuit">
+		</div>
+		
+		<div class="w3-rest w3-container">
+			<p>Unlike our AND circuit, which was constructed from putting two transistors in series, OR gates are constructed from putting two transistors in parallel. By putting the transistors in parallel, the current can bypass the other transistor and reach the output if at least one of the inputs is set to 1, meaning the output can be 1 if either of the inputs are 1.. If both inputs are set to 0, no current flows to the output, making the output 0. If both inputs are 1, current flows to the output through both transistors, making the output 1.</p>
+		</div>
+	
+	</div>
+	
+	<hr>
+	
+	<h2 id="xor-gates"><img src="images/xor.png"> XOR Gates</h2>
+	
+	<div class="w3-row" style="padding-right: 5%">
+		
+		<table style="max-width: 400px" class="w3-table w3-right w3-col w3-container w3-white w3-bordered w3-centered">
+			<tr class="w3-gray"><th>Input A</th><th>Input B</th><th>Output</th></tr>
+			<tr><td>0</td><td>0</td><td>0</td></tr>
+			<tr><td>1</td><td>0</td><td>1</td></tr>
+			<tr><td>0</td><td>1</td><td>1</td></tr>
+			<tr><td>1</td><td>1</td><td>0</td></tr>
+		</table>
+		
+		<div class="w3-rest w3-container">
+			<p>So our OR gate worked flawlessly. Although, there is something interesting about our OR gate and our AND gate. On the truth tables for both the AND and OR gates, we can see that having both of the inputs set as one yields the same result. What if we want a gate that is excusively an OR gate? What if we want an output of 1 in an OR situation but not an AND situation?</p>
+		</div>
+	
+	</div>
+	
+	<br>
+	
+	<div class="w3-row" style="padding-right: 5%">
+		
+		<div class="w3-right w3-container" style="display: inline-block">
+			<img src="images/or-circ.png" alt="OR Circuit">
+		</div>
+		
+		<div class="w3-rest w3-container">
+			
+		</div>
+	
+	</div>
+	
+</div>
+
+<footer class="w3-container">
+  <p>&copy Copyright 2018 Austin Fay</p>
+</footer>
+     
+</div>
+     
+</body>
+</html> 
